@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400..800&display=swap"
+        rel="stylesheet">
+    <style type="text/tailwindcss">
+
+        @theme{
+            /* colors */
+            --color-black:#0B0C10;
+            --color-blue:#5B8DF8;
+            --color-dark:#6B7280;
+            --color-white:#F0F0F2;
+
+            /* fonts */
+            --font-syne: "syne", sans-serif;
+            --font-dm-sans:"DM Sans",sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <main>
+        <div class="mx-[24px]">
+            <h1 class="font-syne font-extrabold text-white mt-[47px] text-[44.8px] leading-[44.8px] tracking-[-1.5px] text-nowrap">
+                Task
+                <span class="text-blue">Flow</span>
+            </h1>
+            <h5 class="pt-[3px] font-dm-sans text-dark text-[13px] leading-[20.8px] tracking-[1.04px] uppercase">TEAM
+                TASK MANAGEMENT</h5>
+            <div class="mt-[16px] flex gap-[24px]">
+                <div>
+                    <span class="ml-[25px] font-bold">0</span>
+                    <p class="uppercase text-white font-dm-sans text-[11px] leading-[17.6px] tracking-[0.66px] text-dark">Total</p>
+                </div>
+                <div>
+                    <span class="ml-[25px] font-bold">0</span>
+                    <p class="uppercase text-white font-dm-sans text-[11px] leading-[17.6px] tracking-[0.66px] text-dark">Done</p>
+                </div>                
+            </div>
+        </div>
+    </main>
+</body>
