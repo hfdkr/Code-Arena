@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeArena - Result</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        systemBackground: '#0D1117',
+                        cardSurface: '#161B22',
+                        brandBlue: '#5c8dff',
+                        brandBlueHover: '#4a7be6',
+                        accentPill: '#A5C8FF',
+                        textMuted: '#8B949E',
+                        borderSubtle: '#30363D',
+                        successBorder: '#238636',
+                        successGlow: '#2ea043',
+                        errorRed: '#f85149',
+                        warningOrange: '#d29922'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D1117;
+            color: #F0F0F2;
+        }
+        /* Custom styles for the SVG circular progress */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans flex flex-col items-center">
+
+    <header class="w-full flex justify-between items-center px-6 py-6 md:py-8">
+        <div class="flex items-center gap-2">
+            <i class="fi fi-rr-terminal text-accentPill text-xl"></i>
+            <h1 class="font-bold text-accentPill text-xl md:text-2xl tracking-tight">CodeArena</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-sm font-mono text-gray-300 hidden md:block">Admin</span>
+            <a href="arena.html" class="flex items-center justify-center border border-borderSubtle rounded-lg w-10 h-10 md:w-11 md:h-11 hover:bg-white/5 transition-colors text-textMuted hover:text-white">
+                <i class="fi fi-rr-home mt-1 text-base md:text-lg"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="w-full max-w-lg mx-auto px-4 pt-2 pb-16 flex flex-col items-center">
+        
+        <div class="bg-cardSurface border border-borderSubtle rounded-[24px] p-8 md:p-10 w-full relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-successGlow to-transparent opacity-50"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-successGlow blur-[50px] opacity-20 pointer-events-none"></div>
+            
+            <div class="text-center mb-8 relative z-10">
+                <div class="text-4xl md:text-5xl mb-4">🔥</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Excellent !</h2>
+                <p class="text-textMuted text-sm md:text-base">Vous maîtrisez les bases de Python.</p>
+            </div>
+            
+            <div class="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-10">
+                <svg class="w-full h-full" viewBox="0 0 120 120">
+                    <circle class="text-borderSubtle" stroke-width="8" stroke="currentColor" fill="transparent" r="54" cx="60" cy="60" />
+                    <circle class="text-successGlow progress-ring__circle" stroke-width="8" stroke-dasharray="339.292" stroke-dashoffset="88.216" stroke-linecap="round" stroke="currentColor" fill="transparent" r="54" cx="60" cy="60" />
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-3xl md:text-4xl font-bold font-mono text-white tracking-tight">74%</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-textMuted uppercase font-mono mt-1">Score</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-10">
+                <div class="border border-borderSubtle bg-transparent rounded-xl p-4 flex flex-col items-center justify-center h-24 md:h-28">
+                    <div class="flex items-center gap-2 mb-2 text-textMuted">
+                        <i class="fi fi-rr-check-circle text-successGlow text-sm mt-0.5"></i>
+                        <span class="text-xs md:text-sm font-mono tracking-wide">Correctes</span>
+                    </div>
+                    <span class="text-2xl md:text-3xl font-mono text-successGlow">7</span>
+                </div>
+                
+                <div class="border border-borderSubtle bg-transparent rounded-xl p-4 flex flex-col items-center justify-center h-24 md:h-28">
+                    <div class="flex items-center gap-2 mb-2 text-textMuted">
+                        <i class="fi fi-rr-cross-circle text-errorRed text-sm mt-0.5"></i>
+                        <span class="text-xs md:text-sm font-mono tracking-wide">Incorrectes</span>
+                    </div>
+                    <span class="text-2xl md:text-3xl font-mono text-errorRed">2</span>
+                </div>
+
+                <div class="border border-borderSubtle bg-transparent rounded-xl p-4 flex flex-col items-center justify-center h-24 md:h-28">
+                    <div class="flex items-center gap-2 mb-2 text-textMuted">
+                        <i class="fi fi-rr-forward text-warningOrange text-sm mt-0.5"></i>
+                        <span class="text-xs md:text-sm font-mono tracking-wide">Passées</span>
+                    </div>
+                    <span class="text-2xl md:text-3xl font-mono text-warningOrange">1</span>
+                </div>
+
+                <div class="border border-borderSubtle bg-transparent rounded-xl p-4 flex flex-col items-center justify-center h-24 md:h-28">
+                    <div class="flex items-center gap-2 mb-2 text-textMuted">
+                        <i class="fi fi-rr-star text-accentPill text-sm mt-0.5"></i>
+                        <span class="text-xs md:text-sm font-mono tracking-wide">Points</span>
+                    </div>
+                    <span class="text-2xl md:text-3xl font-mono text-accentPill">70</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <button class="w-full py-4 bg-brandBlue hover:bg-brandBlueHover text-systemBackground font-bold font-sans text-sm md:text-base rounded-xl flex items-center justify-center gap-2 transition-colors shadow-[0_0_20px_rgba(92,141,255,0.2)]">
+                    <i class="fi fi-rr-refresh mt-0.5"></i> Rejouer
+                </button>
+                <a href="arena.html" class="w-full py-4 border border-borderSubtle text-gray-300 hover:text-white hover:border-textMuted hover:bg-white/5 font-sans text-sm md:text-base rounded-xl flex items-center justify-center gap-2 transition-all text-center">
+                    <i class="fi fi-rr-settings-sliders mt-0.5"></i> Changer de difficulté
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
