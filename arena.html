@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeArena</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        systemBackground: '#0D1117',
+                        cardSurface: '#161B22',
+                        brandBlue: '#5c8dff',
+                        brandBlueHover: '#4a7be6',
+                        accentPill: '#A5C8FF',
+                        textMuted: '#8B949E',
+                        borderSubtle: '#30363D',
+                        successBorder: '#238636',
+                        successGlow: '#2ea043'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D1117;
+            color: #F0F0F2;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans flex flex-col items-center">
+
+    <header class="w-full max-w-5xl flex justify-between items-center px-6 py-8">
+        <h1 class="font-bold text-accentPill text-2xl tracking-tight">CodeArena</h1>
+        <button class="flex items-center gap-2 border border-borderSubtle rounded-lg px-4 py-2 font-mono text-sm hover:bg-white/5 transition-colors">
+            <i class="fi fi-rr-home"></i> Admin
+        </button>
+    </header>
+
+    <main class="w-full max-w-3xl px-4 pb-16 flex flex-col items-center">
+        
+        <div class="bg-cardSurface w-full p-8 md:p-12 lg:p-16 rounded-[24px] border border-borderSubtle shadow-2xl">
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">CodeArena</h2>
+            <p class="text-center text-textMuted mb-12 max-w-lg mx-auto text-sm md:text-base">
+                Teste tes connaissances Python et algorithmique. Chrono, QCM, score automatique.
+            </p>
+            
+            <div class="flex flex-row justify-center gap-8 md:gap-16 mb-12">
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl md:text-4xl font-mono font-bold mb-2">10</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-textMuted uppercase font-mono">Questions</span>
+                </div>
+                <div class="flex flex-col items-center border-x border-borderSubtle px-8 md:px-16">
+                    <span class="text-3xl md:text-4xl font-mono font-bold mb-2">30s</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-textMuted uppercase font-mono">Par Q.</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl md:text-4xl font-mono font-bold mb-2">+10</span>
+                    <span class="text-[10px] md:text-xs tracking-widest text-textMuted uppercase font-mono">Pts/Bonne</span>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <p class="text-center text-[10px] md:text-xs tracking-widest text-textMuted uppercase mb-5 font-mono">Choisir une catégorie</p>
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <button class="px-6 py-2 bg-accentPill text-systemBackground rounded-full text-xs md:text-sm font-mono font-bold shadow-[0_0_15px_rgba(165,200,255,0.2)]">HTML</button>
+                    <button class="px-6 py-2 border border-borderSubtle text-textMuted hover:text-white hover:border-textMuted transition-colors rounded-full text-xs md:text-sm font-mono">CSS</button>
+                    <button class="px-6 py-2 border border-borderSubtle text-textMuted hover:text-white hover:border-textMuted transition-colors rounded-full text-xs md:text-sm font-mono">PYTHON&ALGO</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-10 w-full max-w-2xl mx-auto">
+                <div class="flex-1 border border-successGlow bg-successBorder/10 rounded-xl p-5 cursor-pointer shadow-[0_0_15px_rgba(46,160,67,0.1)]">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_#4ade80]"></div>
+                        <h3 class="font-mono tracking-widest uppercase text-sm">Facile</h3>
+                    </div>
+                    <p class="text-xs text-textMuted">Bases Python, variables, fonctions</p>
+                </div>
+                
+                <div class="flex-1 border border-borderSubtle bg-transparent rounded-xl p-5 cursor-pointer hover:border-textMuted transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_8px_#f97316]"></div>
+                        <h3 class="font-mono tracking-widest uppercase text-sm text-gray-300">Moyen</h3>
+                    </div>
+                    <p class="text-xs text-textMuted">Algo, structures de données, logique</p>
+                </div>
+            </div>
+
+            <button class="w-full max-w-2xl mx-auto flex items-center justify-center gap-3 py-4 md:py-5 bg-brandBlue hover:bg-brandBlueHover transition-colors rounded-xl font-bold text-lg text-systemBackground">
+                <i class="fi fi-ss-play mt-1"></i> Lancer le Quiz
+            </button>
+        </div>
+
+        <div class="w-full max-w-4xl mt-12 pt-8 border-t border-dashed border-borderSubtle grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 px-4">
+            <div class="flex items-start gap-4">
+                <i class="fi fi-rr-clock text-textMuted text-xl mt-1"></i>
+                <div>
+                    <h4 class="font-mono tracking-widest uppercase text-sm mb-1">Chrono</h4>
+                    <p class="text-xs text-textMuted">30 secondes par question.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <i class="fi fi-rr-chart-pie-alt text-textMuted text-xl mt-1"></i>
+                <div>
+                    <h4 class="font-mono tracking-widest uppercase text-sm mb-1">Score</h4>
+                    <p class="text-xs text-textMuted">Calcul immédiat.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-4">
+                <i class="fi fi-rr-forward text-textMuted text-xl mt-1"></i>
+                <div>
+                    <h4 class="font-mono tracking-widest uppercase text-sm mb-1">Passer</h4>
+                    <p class="text-xs text-textMuted">Possibilité de passer une question.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
