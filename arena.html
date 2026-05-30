@@ -48,9 +48,7 @@
     <header class="w-full flex justify-between items-center px-6 py-8">
         <h1 class="font-bold text-accentPill text-2xl tracking-tight">CodeArena</h1>
         <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 border border-borderSubtle rounded-lg px-4 py-2 font-mono text-sm hover:bg-white/5 transition-colors">
-            <p>Admin</p>
-        </button>
+            <span id="adminBtn" class="flex items-center gap-2 border border-borderSubtle rounded-lg cursor-pointer px-4 py-2 font-mono text-sm hover:bg-white/5 transition-colors">Admin</span>
         </div>
     </header>
 
@@ -135,6 +133,84 @@
         </div>
 
     </main>
+
+
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+    
+    <div class="bg-cardSurface border border-borderSubtle rounded-[24px] p-6 md:p-8 w-full max-w-sm relative shadow-2xl transform scale-95 transition-transform duration-300" id="adminModalContent">
+        
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brandBlue to-transparent opacity-50"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-10 bg-brandBlue blur-[40px] opacity-20 pointer-events-none"></div>
+        
+        <button id="closeAdminModal" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-textMuted hover:text-white hover:bg-white/5 rounded-full transition-colors">
+            <i class="fi fi-rr-cross text-xs mt-0.5"></i>
+        </button>
+
+        <div class="flex flex-col items-center text-center mb-6 mt-2">
+            <div class="w-12 h-12 rounded-full bg-brandBlue/10 border border-brandBlue/20 flex items-center justify-center mb-3">
+                <i class="fi fi-rr-shield-check text-brandBlue text-xl mt-1"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-1">Admin Access</h3>
+            <p class="text-xs text-textMuted font-mono">Authenticate to modify questions</p>
+        </div>
+
+        <form id="adminForm" class="flex flex-col gap-4">
+            <div class="flex flex-col gap-1.5">
+                <label for="adminPass" class="text-sm font-mono text-textMuted ml-1">Admin Password</label>
+                <div class="relative">
+                    <i class="fi fi-rr-lock absolute left-4 top-1/2 -translate-y-1/2 text-textMuted mt-0.5"></i>
+                    <input type="password" id="adminPass" class="w-full bg-systemBackground border border-borderSubtle rounded-xl pl-11 pr-4 py-3 text-white placeholder-borderSubtle focus:outline-none focus:border-brandBlue focus:ring-1 focus:ring-brandBlue transition-all font-mono text-sm" placeholder="••••••••">
+                </div>
+            </div>
+            
+            <button type="button" class="w-full mt-2 py-3.5 bg-brandBlue hover:bg-brandBlueHover text-systemBackground font-bold font-sans text-sm md:text-base rounded-xl transition-all shadow-[0_0_15px_rgba(92,141,255,0.2)] hover:shadow-[0_0_25px_rgba(92,141,255,0.4)] flex items-center justify-center gap-2">
+                Log In <i class="fi fi-rr-arrow-right mt-0.5 text-xs"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        const adminBtn = document.getElementById('adminBtn'); 
+        const adminModal = document.getElementById('adminModal');
+        const closeAdminModal = document.getElementById('closeAdminModal');
+        const adminModalContent = document.getElementById('adminModalContent');
+        
+        if(adminBtn) {
+            adminBtn.addEventListener('click', () => {
+                adminModal.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    adminModal.classList.remove('opacity-0');
+                    adminModalContent.classList.remove('scale-95');
+                    adminModalContent.classList.add('scale-100');
+                }, 10);
+            });
+        }
+        
+        const closeModal = () => {
+            adminModal.classList.add('opacity-0');
+            adminModalContent.classList.remove('scale-100');
+            adminModalContent.classList.add('scale-95');
+            
+            
+            setTimeout(() => {
+                adminModal.classList.add('hidden');
+            }, 300); 
+        };
+        
+        if(closeAdminModal) {
+            closeAdminModal.addEventListener('click', closeModal);
+        }
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                closeModal();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
