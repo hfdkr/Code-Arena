@@ -204,3 +204,20 @@ function handleSkip() {
         }
     }
 }
+
+function endQuiz() {
+    clearInterval(timerInterval);
+    
+    // Store results in sessionStorage
+    sessionStorage.setItem('quizScore', score);
+    sessionStorage.setItem('quizAnswers', JSON.stringify(answers));
+    sessionStorage.setItem('quizCategory', selectedCategory);
+    
+    window.location.href = 'score.html';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeQuiz();
+    document.getElementById('skipBtn').addEventListener('click', handleSkip);
+    loadQuestion();
+});
