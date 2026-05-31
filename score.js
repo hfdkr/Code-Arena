@@ -30,4 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
         title = 'Continuez vos efforts !';
         message = `Entraînez-vous pour améliorer votre ${category}.`;
     }
+
+    document.getElementById('resultEmoji').textContent = emoji;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultMessage').textContent = message;
+    document.getElementById('scorePercentage').textContent = percentage + '%';
+    document.getElementById('correctCount').textContent = correctAnswers;
+    document.getElementById('incorrectCount').textContent = incorrectAnswers;
+    document.getElementById('skippedCount').textContent = skippedAnswers;
+    document.getElementById('totalPoints').textContent = score;
+
+    const circumference = 2 * Math.PI * 54;
+    const offset = circumference - (percentage / 100) * circumference;
+    document.getElementById('progressCircle').style.strokeDashoffset = offset;
 });
