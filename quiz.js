@@ -16,3 +16,12 @@ let answered = false;
 
 let quiz;
 let questions;
+
+function initializeQuiz() {
+    if (!quizData || !quizData[selectedCategory]) {
+        console.error(`Quiz data not found for category: ${selectedCategory}`);
+        return;
+    }
+    quiz = quizData[selectedCategory];
+    questions = quiz.questions;
+}
