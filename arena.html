@@ -78,15 +78,15 @@
 
             <div class="mb-12">
                 <p class="text-center text-[10px] md:text-xs tracking-widest text-textMuted uppercase mb-5 font-mono">Choisir une catégorie</p>
-                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
-                    <button class="px-6 py-2 bg-accentPill text-systemBackground rounded-full text-xs md:text-sm font-mono font-bold shadow-[0_0_15px_rgba(165,200,255,0.2)]">HTML</button>
-                    <button class="px-6 py-2 border border-borderSubtle text-textMuted hover:text-white hover:border-textMuted transition-colors rounded-full text-xs md:text-sm font-mono">CSS</button>
-                    <button class="px-6 py-2 border border-borderSubtle text-textMuted hover:text-white hover:border-textMuted transition-colors rounded-full text-xs md:text-sm font-mono">PYTHON&ALGO</button>
+                <div id="categoryButtons" class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <button data-category="HTML" class="category-btn px-6 py-2 bg-accentPill text-systemBackground rounded-full text-xs md:text-sm font-mono font-bold shadow-[0_0_15px_rgba(165,200,255,0.2)]">HTML</button>
+                    <button data-category="CSS" class="category-btn px-6 py-2 border border-borderSubtle text-textMuted hover:text-white hover:border-textMuted transition-colors rounded-full text-xs md:text-sm font-mono">CSS</button>
+                    <button data-category="PYTHON&ALGO" class="category-btn px-6 py-2 border border-borderSubtle text-textMuted hover:text-white hover:border-textMuted transition-colors rounded-full text-xs md:text-sm font-mono">PYTHON&ALGO</button>
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-10 w-full max-w-2xl mx-auto">
-                <div class="flex-1 border border-borderSubtle bg-transparent rounded-xl p-5 cursor-pointer hover:border-textMuted transition-colors shadow-[0_0_15px_rgba(46,160,67,0.1)]">
+            <div id="difficultyContainer" class="flex flex-col md:flex-row gap-4 md:gap-6 mb-10 w-full max-w-2xl mx-auto">
+                <div id="easyDiff" class="difficulty-btn flex-1 border border-borderSubtle bg-transparent rounded-xl p-5 cursor-pointer hover:border-textMuted transition-colors shadow-[0_0_15px_rgba(46,160,67,0.1)]" data-difficulty="easy">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_8px_#4ade80]"></div>
                         <h3 class="font-mono tracking-widest uppercase text-sm">Facile</h3>
@@ -94,7 +94,7 @@
                     <p class="text-xs text-textMuted">Bases Python, variables, fonctions</p>
                 </div>
                 
-                <div class="flex-1 border border-borderSubtle bg-transparent rounded-xl p-5 cursor-pointer hover:border-textMuted transition-colors shadow-[0_0_15px_rgba(255,165,0,0.1)]">
+                <div id="hardDiff" class="difficulty-btn flex-1 border border-borderSubtle bg-transparent rounded-xl p-5 cursor-pointer hover:border-textMuted transition-colors shadow-[0_0_15px_rgba(255,165,0,0.1)]" data-difficulty="hard">
                     <div class="flex items-center gap-3 mb-2">
                         <div class="w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_8px_#f97316]"></div>
                         <h3 class="font-mono tracking-widest uppercase text-sm text-gray-300">Moyen</h3>
@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <button class="w-full max-w-2xl mx-auto flex items-center justify-center gap-3 py-4 md:py-5 bg-brandBlue hover:bg-brandBlueHover transition-colors rounded-xl font-bold text-lg text-systemBackground">
+            <button id="launchBtn" disabled class="w-full max-w-2xl mx-auto flex items-center justify-center gap-3 py-4 md:py-5 bg-brandBlue hover:bg-brandBlueHover disabled:opacity-50 disabled:cursor-not-allowed transition-colors rounded-xl font-bold text-lg text-systemBackground">
                 <i class="fi fi-ss-play mt-1"></i> Lancer le Quiz
             </button>
         </div>
@@ -170,47 +170,7 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        const adminBtn = document.getElementById('adminBtn'); 
-        const adminModal = document.getElementById('adminModal');
-        const closeAdminModal = document.getElementById('closeAdminModal');
-        const adminModalContent = document.getElementById('adminModalContent');
-        
-        if(adminBtn) {
-            adminBtn.addEventListener('click', () => {
-                adminModal.classList.remove('hidden');
-                
-                setTimeout(() => {
-                    adminModal.classList.remove('opacity-0');
-                    adminModalContent.classList.remove('scale-95');
-                    adminModalContent.classList.add('scale-100');
-                }, 10);
-            });
-        }
-        
-        const closeModal = () => {
-            adminModal.classList.add('opacity-0');
-            adminModalContent.classList.remove('scale-100');
-            adminModalContent.classList.add('scale-95');
-            
-            
-            setTimeout(() => {
-                adminModal.classList.add('hidden');
-            }, 300); 
-        };
-        
-        if(closeAdminModal) {
-            closeAdminModal.addEventListener('click', closeModal);
-        }
-        adminModal.addEventListener('click', (e) => {
-            if (e.target === adminModal) {
-                closeModal();
-            }
-        });
-    });
-</script>
+<script src="arena.js"></script>
 
 </body>
 </html>
