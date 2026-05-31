@@ -182,3 +182,25 @@ function handleTimeout() {
         }, 1500);
     }
 }
+
+function handleSkip() {
+    if (!answered) {
+        answered = true;
+        clearInterval(timerInterval);
+        
+        const q = questions[currentQuestionIndex];
+        answers.push({
+            question: q.question,
+            selected: null,
+            correct: q.answer,
+            isCorrect: false
+        });
+
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    }
+}
