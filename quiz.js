@@ -52,3 +52,55 @@ function startTimer() {
     clearInterval(timerInterval);
     timerInterval = setInterval(updateTimer, 1000);
 }
+
+function loadQuestion() {
+    const q = questions[currentQuestionIndex];
+    const totalQuestions = questions.length;
+    const remaining = totalQuestions - (currentQuestionIndex + 1);
+    
+    // Update Text & Progress
+    document.getElementById('tracker').textContent = `Question ${currentQuestionIndex + 1} / ${totalQuestions}`;
+    document.getElementById('remaining').textContent = `${remaining} restante${remaining !== 1 ? 's' : ''}`;
+    document.getElementById('question').textContent = q.question;
+    document.getElementById('progress').style.width = ((currentQuestionIndex + 1) / totalQuestions) * 100 + '%';
+    
+    // Update Subject Tag
+    document.getElementById('tag-subject').textContent = selectedCategory;
+    
+    // Update Difficulty Tag
+    document.getElementById('tag-difficulty').textContent = selectedDifficulty === 'easy' ? 'Facile' : 'Moyen';
+
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+
+    // Create Option Buttons
+    q.options.forEach((opt, idx) => {
+        const letter = String.fromCharCode(65 + idx); 
+        const btn = document.createElement('button');
+        
+        btn.className = 'option-btn flex items-center p-3 md:p-4 rounded-xl md:rounded-2xl bg-systemBackground border border-transparent hover:border-borderSubtle transition-all w-full text-left group cursor-pointer shadow-sm';
+        btn.dataset.index = idx;
+        btn.dataset.option = opt;
+        
+        const displayText = opt.trim() === "" ? "None of the above" : escapeHTML(opt);
+        
+        btn.innerHTML = `
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white/5 flex items-center justify-center text-textMuted font-mono text-xs md:text-sm mr-4 group-hover:bg-white/10 group-hover:text-white transition-all shrink-0">
+                ${letter}
+            </div>
+            <span class="font-mono text-sm md:text-base text-gray-300 leading-tight">
+                ${displayText}
+            </span>
+        `;
+        
+        btn.addEventListener('click', () => {
+            if (!answered) {
+                handleAnswer(opt, btn);
+            }
+        });
+        
+        container.appendChild(btn);
+    });
+
+    startTimer();
+}
