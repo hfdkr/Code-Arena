@@ -60,10 +60,10 @@
         <div class="flex justify-between items-center mb-8 md:mb-10">
             <div class="flex items-center gap-2 bg-cardSurface border border-borderSubtle rounded-full px-4 py-2 shadow-sm">
                 <i class="fi fi-ss-star text-xs mt-0.5"></i>
-                <span class="text-xs md:text-sm font-mono text-gray-300 font-bold tracking-wide">0 pts</span>
+                <span id="scoreDisplay" class="text-xs md:text-sm font-mono text-gray-300 font-bold tracking-wide">0 pts</span>
             </div>
-            <div class="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-brandBlue flex items-center justify-center text-brandBlue font-mono font-bold text-base md:text-lg shadow-[0_0_15px_rgba(92,141,255,0.2)]">
-                28
+            <div id="timerDisplay" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-brandBlue flex items-center justify-center text-brandBlue font-mono font-bold text-base md:text-lg shadow-[0_0_15px_rgba(92,141,255,0.2)]">
+                30
             </div>
         </div>
 
@@ -83,7 +83,7 @@
             <!-- Subject & Difficulty Tags -->
             <div class="flex flex-wrap gap-2 md:gap-3 mb-6 md:mb-8">
                 <span id="tag-subject" class="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-borderSubtle bg-white/5 text-[10px] md:text-xs font-mono text-brandBlue tracking-wider">HTML</span>
-                <span class="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-borderSubtle bg-white/5 text-[10px] md:text-xs font-mono text-successGlow tracking-wider">Facile</span>
+                <span id="tag-difficulty" class="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-borderSubtle bg-white/5 text-[10px] md:text-xs font-mono text-successGlow tracking-wider">Facile</span>
             </div>
             
             <h2 id="question" class="text-xl md:text-[28px] leading-relaxed md:leading-snug font-bold text-white mb-8 md:mb-10">
@@ -95,7 +95,7 @@
         </div>
 
         <div class="mt-6 md:mt-8 flex justify-start">
-            <button class="px-6 py-2.5 md:px-8 md:py-3 rounded-xl border border-borderSubtle text-xs md:text-sm font-mono text-gray-300 hover:text-white hover:bg-white/5 transition-all">
+            <button id="skipBtn" class="px-6 py-2.5 md:px-8 md:py-3 rounded-xl border border-borderSubtle text-xs md:text-sm font-mono text-gray-300 hover:text-white hover:bg-white/5 transition-all">
                 Passer
             </button>
         </div>
@@ -103,52 +103,6 @@
     </main>
 
     <script src="data.js"></script>
-    <script>
-        const params = new URLSearchParams(location.search);
-        const subject = params.get("subject") || "HTML"; 
-        const quiz = quizData[subject];
-        let i = 0; // Starts at the first question
-
-        function load() {
-            const q = quiz.questions[i];
-            const totalQuestions = quiz.questions.length;
-            const remaining = totalQuestions - (i + 1);
-            
-            // Update Text & Progress
-            document.getElementById("tracker").textContent = `Question ${i + 1} / ${totalQuestions}`;
-            document.getElementById("remaining").textContent = `${remaining} restantes`;
-            document.getElementById("question").textContent = q.question;
-            document.getElementById("progress").style.width = ((i + 1) / totalQuestions) * 100 + "%";
-            
-            // Update Subject Tag
-            document.getElementById("tag-subject").textContent = subject;
-
-            const container = document.getElementById("options-container");
-            container.innerHTML = "";
-
-            // Create Option Buttons (Visual Only)
-            q.options.forEach((opt, idx) => {
-                const letter = String.fromCharCode(65 + idx); 
-                const btn = document.createElement("button");
-                
-                // Tailwind classes matching the screenshot's option style
-                btn.className = "flex items-center p-3 md:p-4 rounded-xl md:rounded-2xl bg-systemBackground border border-transparent hover:border-borderSubtle transition-all w-full text-left group cursor-pointer shadow-sm";
-                
-                btn.innerHTML = `
-                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-white/5 flex items-center justify-center text-textMuted font-mono text-xs md:text-sm mr-4 group-hover:bg-white/10 group-hover:text-white transition-all shrink-0">
-                        ${letter}
-                    </div>
-                    <span class="font-mono text-sm md:text-base text-gray-300 leading-tight">
-                        ${opt.trim() === "" ? "None of the above" : opt}
-                    </span>
-                `;
-                
-                container.appendChild(btn);
-            });
-        }
-
-        // Initialize quiz
-        load();
-    </script>
+    <script src="quiz.js"></script>
 </body>
 </html>
