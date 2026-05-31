@@ -43,4 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const circumference = 2 * Math.PI * 54;
     const offset = circumference - (percentage / 100) * circumference;
     document.getElementById('progressCircle').style.strokeDashoffset = offset;
+
+    document.getElementById('replayBtn').addEventListener('click', () => {
+        sessionStorage.removeItem('quizScore');
+        sessionStorage.removeItem('quizAnswers');
+        window.location.href = 'quiz.html';
+    });
 });
