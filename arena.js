@@ -55,4 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
             launchBtn.disabled = false;
         });
     });
+
+    difficultyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            difficultyBtns.forEach(b => {
+                b.classList.remove('border-textMuted', 'bg-white/5');
+                b.classList.add('border-borderSubtle', 'bg-transparent');
+            });
+            btn.classList.remove('border-borderSubtle', 'bg-transparent');
+            btn.classList.add('border-textMuted', 'bg-white/5');
+            selectedDifficulty = btn.dataset.difficulty;
+        });
+    });
+
+    launchBtn.addEventListener('click', () => {
+        sessionStorage.setItem('quizCategory', selectedCategory);
+        sessionStorage.setItem('quizDifficulty', selectedDifficulty);
+        window.location.href = 'quiz.html';
+    });
 });
