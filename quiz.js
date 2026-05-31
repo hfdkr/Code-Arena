@@ -150,3 +150,35 @@ function handleAnswer(selectedAnswer, btn) {
         }
     }, 1500);
 }
+
+function handleTimeout() {
+    if (!answered) {
+        answered = true;
+        
+        // Record as skipped
+        const q = questions[currentQuestionIndex];
+        answers.push({
+            question: q.question,
+            selected: null,
+            correct: q.answer,
+            isCorrect: false
+        });
+
+        // Highlight correct answer
+        const options = document.querySelectorAll('.option-btn');
+        options.forEach(opt => {
+            if (opt.dataset.option === q.answer) {
+                opt.classList.add('border-successGlow', 'bg-successGlow/10');
+            }
+        });
+
+        setTimeout(() => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                endQuiz();
+            }
+        }, 1500);
+    }
+}
