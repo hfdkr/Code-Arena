@@ -104,3 +104,49 @@ function loadQuestion() {
 
     startTimer();
 }
+
+function handleAnswer(selectedAnswer, btn) {
+    answered = true;
+    clearInterval(timerInterval);
+    
+    const q = questions[currentQuestionIndex];
+    const isCorrect = selectedAnswer === q.answer;
+    
+    // Record answer
+    answers.push({
+        question: q.question,
+        selected: selectedAnswer,
+        correct: q.answer,
+        isCorrect: isCorrect
+    });
+
+    if (isCorrect) {
+        score += 10;
+        btn.classList.add('border-successGlow', 'bg-successGlow/10');
+        btn.classList.remove('hover:border-borderSubtle', 'bg-systemBackground');
+    } else {
+        btn.classList.add('border-errorRed', 'bg-errorRed/10');
+        btn.classList.remove('hover:border-borderSubtle', 'bg-systemBackground');
+        
+        // Highlight correct answer
+        const options = document.querySelectorAll('.option-btn');
+        options.forEach(opt => {
+            if (opt.dataset.option === q.answer) {
+                opt.classList.add('border-successGlow', 'bg-successGlow/10');
+                opt.classList.remove('hover:border-borderSubtle', 'bg-systemBackground');
+            }
+        });
+    }
+
+    document.getElementById('scoreDisplay').textContent = score + ' pts';
+    
+    // Auto advance after 1.5 seconds
+    setTimeout(() => {
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            loadQuestion();
+        } else {
+            endQuiz();
+        }
+    }, 1500);
+}
